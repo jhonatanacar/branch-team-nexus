@@ -27,17 +27,21 @@ from datetime import datetime, timedelta
 
 import numpy as np
 
+import sys
+
 from gfs_forecast import LATS as GFS_LATS, LONS as GFS_LONS, get_gfs_forecast, make_windows
 
 VARS = ["RH", "T", "U", "V"]
 APP = Path(__file__).resolve().parent          # carpeta app/
 RAIZ = APP.parent                                # raíz del repositorio
+sys.path.insert(0, str(RAIZ / "train"))
+import modelo  # noqa: E402  (mismo código que entrena, así app y Kaggle dan lo mismo)
 
 
 # ---------------------------------------------------------------------------
 # 1. TU MODELO VA AQUÍ
 # ---------------------------------------------------------------------------
-def predecir(Xw, static):
+def predecir(Xw, static, times):
     """
     Entrada:
       Xw     : (N, 3, 17, 13, 4) ventanas [t-2, t-1, t] del GFS, en unidades físicas
@@ -51,13 +55,15 @@ def predecir(Xw, static):
         Xn = normalizar(Xw)            # igual que en tu entrenamiento
         Y = desnormalizar(modelo(Xn))  # (N, 70, 35, 4)
     """
-    # --- MODELO DE RELLENO (no usar en la entrega) ---
-    Xt = Xw[:, -1]                                        # solo la hora t
-    Y = _interpolar_a_wrf(Xt, static["wrf_lats"], static["wrf_lons"])
-    dem = static["dem"].astype(np.float32)
-    dem_suave = _suavizar(dem, k=9)                       # relieve "visto" a baja resolución
-    Y[..., 1] -= 0.0065 * (dem - dem_suave)               # T baja ~6.5 °C por km extra de altura
-    return Y
+    # Modelo de TEAM NEXUS: mismos pesos y stats que la submission de Kaggle (models/).
+    global _ENSAMBLE
+    if _ENSAMBLE is None:
+        _ENSAMBLE = modelo.load_ensemble(str(RAIZ / "models"))
+    models, stats = _ENSAMBLE
+    return modelo.predict(models, stats, Xw.astype(np.float32), times)
+
+
+_ENSAMBLE = None
 
 
 # ---------------------------------------------------------------------------
@@ -124,6 +130,19 @@ def _suavizar(a, k=9):
     return out / (k * k)
 
 
+def descargar_gfs(horas):
+    """GFS actual; si Open-Meteo falla, la última descarga guardada (pedido de la guía). -> (X, times, aviso|None)"""
+    cache = APP / "gfs_cache.npz"
+    try:
+        X, times = get_gfs_forecast(forecast_hours=horas, cache_path=str(cache))
+        return X, times, None
+    except Exception as e:
+        if not cache.exists():
+            raise
+        d = np.load(cache)
+        return d["X"], d["times"], f"Open-Meteo no respondió ({type(e).__name__}). Uso la última descarga guardada."
+
+
 def main():
     ap = argparse.ArgumentParser(description="Ejemplo de producto: alerta de heladas")
     ap.add_argument("--static", default=str(RAIZ / "data" / "static.npz"), help="ruta a static.npz (de Kaggle)")
@@ -138,9 +157,11 @@ def main():
     if a.desde:
         X, times = get_gfs_forecast(start_date=a.desde, end_date=a.hasta or a.desde)
     else:
-        X, times = get_gfs_forecast(forecast_hours=a.horas, cache_path=str(APP / "gfs_cache.npz"))
+        X, times, aviso = descargar_gfs(a.horas)
+        if aviso:
+            print("AVISO:", aviso)
     Xw, times = make_windows(X, times)
-    Y = predecir(Xw, static)
+    Y = predecir(Xw, static, times)
     assert Y.shape[1:] == (70, 35, 4), f"predecir() debe devolver (N, 70, 35, 4), devolvió {Y.shape}"
 
     tmin, hora_min, helada = alerta_heladas(Y, times)

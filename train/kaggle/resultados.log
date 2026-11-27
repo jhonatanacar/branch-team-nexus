@@ -1,0 +1,56 @@
+2026-11-26 05:38 UTC RESULTADO config A {'w': 64, 'enc': 1, 'wd': 0.0001} -> val 0.3546 [9.258 0.963 1.694 1.583] · épocas [21, 18, 21, 20, 21] · 195s
+2026-11-26 05:38 UTC RESULTADO config B {'w': 96, 'enc': 2, 'wd': 0.0001} -> val 0.3566 [8.89  1.015 1.673 1.578] · épocas [16, 19, 19, 17, 17] · 347s
+2026-11-26 05:38 UTC RESULTADO config C {'w': 64, 'enc': 1, 'wd': 0.01} -> val 0.3545 [9.263 0.959 1.698 1.584] · épocas [21, 18, 21, 20, 19] · 190s
+2026-11-26 05:38 UTC RESULTADO config D {'w': 64, 'enc': 2, 'wd': 0.0001} -> val 0.3504 [9.232 1.008 1.684 1.584] · épocas [24, 20, 19, 20, 24] · 214s
+2026-11-26 05:38 UTC RESULTADO config E {'w': 96, 'enc': 1, 'wd': 0.0001} -> val 0.3588 [9.378 0.949 1.667 1.575] · épocas [21, 23, 21, 25, 25] · 316s
+2026-11-26 05:38 UTC RESULTADO config F {'w': 128, 'enc': 2, 'wd': 0.001} -> val 0.3638 [8.701 1.001 1.664 1.565] · épocas [16, 20, 19, 16, 18] · 453s
+2026-11-26 05:38 UTC RESULTADO ensamble elegido ['F', 'E'] -> val 0.3692 [8.865 0.961 1.651 1.554]
+2026-11-26 12:49 UTC RESULTADO config E {'w': 96, 'enc': 1, 'wd': 0.0001} -> val 0.3588 [9.375 0.949 1.667 1.575] · épocas [21, 23, 21, 25, 25] · 270s
+2026-11-26 12:49 UTC RESULTADO config F {'w': 128, 'enc': 2, 'wd': 0.001} -> val 0.3639 [8.694 1.001 1.664 1.565] · épocas [16, 20, 19, 16, 18] · 372s
+2026-11-26 12:49 UTC RESULTADO config G {'w': 160, 'enc': 2, 'wd': 0.001} -> val 0.3618 [8.844 1.024 1.649 1.554] · épocas [19, 16, 14, 17, 18] · 617s
+2026-11-26 12:49 UTC RESULTADO config H {'w': 192, 'enc': 2, 'wd': 0.001} -> val 0.3604 [8.861 1.008 1.659 1.57 ] · épocas [16, 15, 20, 14, 18] · 648s
+2026-11-26 12:49 UTC RESULTADO config I {'w': 128, 'enc': 1, 'wd': 0.0001} -> val 0.3648 [9.237 0.952 1.658 1.549] · épocas [21, 20, 19, 22, 25] · 342s
+2026-11-26 12:49 UTC RESULTADO ensamble elegido ['I', 'F', 'G', 'E'] -> val 0.3720 [8.838 0.964 1.641 1.541]
+2026-11-26 15:32 UTC RESULTADO config E {'w': 96, 'enc': 1, 'wd': 0.0001} -> val 0.3623 [9.249 0.949 1.666 1.562] · épocas [21, 23, 21, 25, 25, 25, 20, 20, 22, 22] · 568s
+2026-11-26 15:32 UTC RESULTADO config F {'w': 128, 'enc': 2, 'wd': 0.001} -> val 0.3651 [8.742 0.995 1.657 1.562] · épocas [16, 20, 19, 16, 18, 18, 16, 15, 17, 19] · 857s
+2026-11-26 15:32 UTC RESULTADO config G {'w': 160, 'enc': 2, 'wd': 0.001} -> val 0.3660 [8.773 1.009 1.644 1.549] · épocas [19, 16, 14, 17, 19, 19, 16, 21, 19, 15] · 1406s
+2026-11-26 15:32 UTC RESULTADO config I {'w': 128, 'enc': 1, 'wd': 0.0001} -> val 0.3661 [9.191 0.953 1.652 1.547] · épocas [21, 20, 19, 22, 25, 22, 20, 24, 19, 22] · 756s
+2026-11-26 15:32 UTC RESULTADO ensamble elegido ['I', 'G'] -> val 0.3725 [8.854 0.968 1.636 1.535]
+2026-11-26 16:51 UTC RESULTADO {'arch': 'base', 'epochs': 25, 'width': 128, 'lr': 0.002, 'terrain': 0, 'enc': 1, 'wd': 0.0001, 'seeds': [0, 1, 2], 'win': 3, 'lossw': '1,1,1,1', 'dec': 0, 'gfsup': 0, 'noise': 0.0, 'save': '0_base'} -> ensamble 0.3636 {'RH': 9.229000091552734, 'T': 0.9509999752044678, 'U': 1.6629999876022339, 'V': 1.5549999475479126}
+2026-11-26 16:51 UTC RESULTADO {'arch': 'base', 'epochs': 25, 'width': 128, 'lr': 0.002, 'terrain': 0, 'enc': 1, 'wd': 0.0001, 'seeds': [0, 1, 2], 'win': 6, 'lossw': '1,1,1,1', 'dec': 0, 'gfsup': 0, 'noise': 0.0, 'save': '1_win6'} -> ensamble 0.3567 {'RH': 9.182999610900879, 'T': 0.9810000061988831, 'U': 1.6779999732971191, 'V': 1.5720000267028809}
+2026-11-26 16:51 UTC RESULTADO {'arch': 'base', 'epochs': 25, 'width': 128, 'lr': 0.002, 'terrain': 0, 'enc': 1, 'wd': 0.0001, 'seeds': [0, 1, 2], 'win': 3, 'lossw': '1,1,2,2', 'dec': 0, 'gfsup': 0, 'noise': 0.0, 'save': '2_viento'} -> ensamble 0.3599 {'RH': 9.187000274658203, 'T': 0.9879999756813049, 'U': 1.6510000228881836, 'V': 1.562999963760376}
+2026-11-26 16:51 UTC RESULTADO {'arch': 'base', 'epochs': 25, 'width': 128, 'lr': 0.002, 'terrain': 0, 'enc': 1, 'wd': 0.0001, 'seeds': [0, 1, 2], 'win': 3, 'lossw': '1,1,1,1', 'dec': 2, 'gfsup': 0, 'noise': 0.0, 'save': '3_dec2'} -> ensamble 0.3425 {'RH': 9.314000129699707, 'T': 1.003000020980835, 'U': 1.7319999933242798, 'V': 1.600000023841858}
+2026-11-26 16:51 UTC RESULTADO {'arch': 'base', 'epochs': 25, 'width': 128, 'lr': 0.002, 'terrain': 0, 'enc': 1, 'wd': 0.0001, 'seeds': [0, 1, 2], 'win': 3, 'lossw': '1,1,1,1', 'dec': 0, 'gfsup': 1, 'noise': 0.0, 'save': '4_gfsup'} -> ensamble 0.3593 {'RH': 9.345000267028809, 'T': 0.9490000009536743, 'U': 1.6649999618530273, 'V': 1.5750000476837158}
+2026-11-26 16:51 UTC RESULTADO {'arch': 'base', 'epochs': 25, 'width': 128, 'lr': 0.002, 'terrain': 0, 'enc': 1, 'wd': 0.0001, 'seeds': [0, 1, 2], 'win': 3, 'lossw': '1,1,1,1', 'dec': 0, 'gfsup': 0, 'noise': 0.1, 'save': '5_ruido'} -> ensamble 0.3601 {'RH': 9.305999755859375, 'T': 0.9570000171661377, 'U': 1.6660000085830688, 'V': 1.565999984741211}
+2026-11-26 16:51 UTC RESULTADO {'arch': 'base', 'epochs': 40, 'width': 128, 'lr': 0.002, 'terrain': 0, 'enc': 1, 'wd': 0.0001, 'seeds': [0, 1, 2], 'win': 3, 'lossw': '1,1,1,1', 'dec': 0, 'gfsup': 0, 'noise': 0.0, 'save': '6_ep40'} -> ensamble 0.3657 {'RH': 9.064000129699707, 'T': 0.9610000252723694, 'U': 1.6649999618530273, 'V': 1.5460000038146973}
+2026-11-26 16:51 UTC RESULTADO ablacion 6_ep40    val 0.3657 (+0.0020) · dRMSE RH -0.165 T +0.010 U +0.002 V -0.009
+2026-11-26 16:51 UTC RESULTADO ablacion 0_base    val 0.3636 (+0.0000) · dRMSE RH +0.000 T +0.000 U +0.000 V +0.000
+2026-11-26 16:51 UTC RESULTADO ablacion 5_ruido   val 0.3601 (-0.0035) · dRMSE RH +0.077 T +0.006 U +0.002 V +0.011
+2026-11-26 16:51 UTC RESULTADO ablacion 2_viento  val 0.3599 (-0.0038) · dRMSE RH -0.042 T +0.037 U -0.012 V +0.008
+2026-11-26 16:51 UTC RESULTADO ablacion 4_gfsup   val 0.3593 (-0.0043) · dRMSE RH +0.116 T -0.002 U +0.002 V +0.020
+2026-11-26 16:51 UTC RESULTADO ablacion 1_win6    val 0.3567 (-0.0069) · dRMSE RH -0.046 T +0.030 U +0.015 V +0.017
+2026-11-26 16:51 UTC RESULTADO ablacion 3_dec2    val 0.3425 (-0.0211) · dRMSE RH +0.085 T +0.052 U +0.068 V +0.046
+2026-11-26 19:04 UTC RESULTADO config I {'w': 128, 'enc': 1, 'wd': 0.0001} -> val 0.3648 [9.237 0.952 1.658 1.549] · épocas [21, 20, 19, 22, 25] · 341s
+2026-11-26 19:04 UTC RESULTADO config Ig {'w': 128, 'enc': 1, 'wd': 0.0001, 'anchor': 'gfs'} -> val 0.3781 [8.967 0.881 1.647 1.554] · épocas [19, 15, 19, 17, 17] · 349s
+2026-11-26 19:04 UTC RESULTADO config Fg {'w': 128, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs'} -> val 0.3791 [8.703 0.886 1.652 1.567] · épocas [16, 15, 10, 17, 14] · 380s
+2026-11-26 20:25 UTC RESULTADO config I {'w': 128, 'enc': 1, 'wd': 0.0001} -> val 0.3648 [9.237 0.952 1.658 1.549] · épocas [21, 20, 19, 22, 25] · 379s
+2026-11-26 20:25 UTC RESULTADO config Ig {'w': 128, 'enc': 1, 'wd': 0.0001, 'anchor': 'gfs'} -> val 0.3781 [8.967 0.881 1.647 1.554] · épocas [19, 15, 19, 17, 17] · 381s
+2026-11-26 20:25 UTC RESULTADO config Fg {'w': 128, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs'} -> val 0.3792 [8.697 0.886 1.652 1.567] · épocas [16, 15, 10, 17, 14] · 429s
+2026-11-26 20:25 UTC RESULTADO config Gg {'w': 160, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs'} -> val 0.3846 [8.577 0.884 1.637 1.553] · épocas [13, 15, 12, 11, 14] · 707s
+2026-11-26 20:25 UTC RESULTADO config Eg {'w': 96, 'enc': 1, 'wd': 0.0001, 'anchor': 'gfs'} -> val 0.3741 [9.093 0.885 1.652 1.562] · épocas [21, 23, 19, 21, 20] · 283s
+2026-11-26 20:25 UTC RESULTADO config Igr {'w': 128, 'enc': 1, 'wd': 0.0001, 'anchor': 'gfs', 'rep': 3} -> val 0.3791 [8.885 0.878 1.64  1.565] · épocas [17, 10, 14, 9, 15] · 479s
+2026-11-26 20:25 UTC RESULTADO ensamble elegido ['Gg', 'Igr', 'I', 'Fg'] -> val 0.3900 [8.645 0.863 1.622 1.536]
+2026-11-26 22:38 UTC RESULTADO config I {'w': 128, 'enc': 1, 'wd': 0.0001} -> val 0.3648 [9.237 0.952 1.658 1.549] · épocas [21, 20, 19, 22, 25] · 377s
+2026-11-26 22:38 UTC RESULTADO config Fg {'w': 128, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs'} -> val 0.3792 [8.699 0.886 1.652 1.567] · épocas [16, 15, 10, 17, 14] · 434s
+2026-11-26 22:38 UTC RESULTADO config Gg {'w': 160, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs'} -> val 0.3865 [8.502 0.878 1.638 1.552] · épocas [13, 15, 18, 11, 17] · 717s
+2026-11-26 22:38 UTC RESULTADO config Igr {'w': 128, 'enc': 1, 'wd': 0.0001, 'anchor': 'gfs', 'rep': 3} -> val 0.3791 [8.885 0.878 1.64  1.565] · épocas [17, 10, 14, 9, 15] · 486s
+2026-11-26 22:38 UTC RESULTADO config Hg {'w': 192, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs'} -> val 0.3841 [8.508 0.882 1.642 1.562] · épocas [12, 15, 12, 11, 14] · 756s
+2026-11-26 22:38 UTC RESULTADO config Jg {'w': 224, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs'} -> val 0.3823 [8.728 0.879 1.645 1.551] · épocas [13, 25, 11, 17, 16] · 1100s
+2026-11-26 22:38 UTC RESULTADO config Ggr {'w': 160, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs', 'rep': 3} -> val 0.3804 [8.531 0.89  1.653 1.571] · épocas [11, 13, 11, 13, 12] · 904s
+2026-11-26 22:38 UTC RESULTADO ensamble elegido ['Gg', 'Igr', 'Hg', 'I', 'Ggr'] -> val 0.3930 [8.512 0.858 1.619 1.535]
+2026-11-27 03:55 UTC RESULTADO config Gg {'w': 160, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs'} -> val 0.3793 [8.712 0.887 1.65  1.565] · épocas [14, 16, 7, 14, 17] · 610s
+2026-11-27 03:55 UTC RESULTADO config Igr {'w': 128, 'enc': 1, 'wd': 0.0001, 'anchor': 'gfs', 'rep': 3} -> val 0.3764 [9.031 0.879 1.646 1.563] · épocas [13, 15, 13, 13, 13] · 428s
+2026-11-27 03:55 UTC RESULTADO config Hg {'w': 192, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs'} -> val 0.3868 [8.735 0.871 1.623 1.543] · épocas [14, 15, 21, 17, 17] · 649s
+2026-11-27 03:55 UTC RESULTADO config I {'w': 128, 'enc': 1, 'wd': 0.0001} -> val 0.3622 [9.248 0.963 1.658 1.557] · épocas [22, 20, 24, 19, 22] · 339s
+2026-11-27 03:55 UTC RESULTADO config Ggr {'w': 160, 'enc': 2, 'wd': 0.001, 'anchor': 'gfs', 'rep': 3} -> val 0.3798 [8.86  0.889 1.641 1.55 ] · épocas [11, 11, 12, 9, 5] · 764s
+2026-11-27 03:55 UTC RESULTADO ensamble elegido ['Hg', 'Igr', 'Ggr', 'I', 'Gg'] -> val 0.3901 [8.717 0.861 1.618 1.533]

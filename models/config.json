@@ -1,0 +1,51 @@
+{
+ "configs": {
+  "Gg": {
+   "w": 160,
+   "enc": 2,
+   "wd": 0.001,
+   "anchor": "gfs"
+  },
+  "Igr": {
+   "w": 128,
+   "enc": 1,
+   "wd": 0.0001,
+   "anchor": "gfs",
+   "rep": 3
+  },
+  "Hg": {
+   "w": 192,
+   "enc": 2,
+   "wd": 0.001,
+   "anchor": "gfs"
+  },
+  "I": {
+   "w": 128,
+   "enc": 1,
+   "wd": 0.0001
+  },
+  "Ggr": {
+   "w": 160,
+   "enc": 2,
+   "wd": 0.001,
+   "anchor": "gfs",
+   "rep": 3
+  }
+ },
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "epochs": {
+  "Gg": 15,
+  "Igr": 14,
+  "Hg": 12,
+  "I": 21,
+  "Ggr": 12
+ },
+ "val_score": 0.393,
+ "quick": false
+}

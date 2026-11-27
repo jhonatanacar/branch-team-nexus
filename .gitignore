@@ -2,6 +2,7 @@
 data/*
 !data/README.md
 *.npz
+!models/*.npz
 *.csv
 
 # Caché del GFS y salidas del producto
@@ -18,3 +19,10 @@ venv/
 # Claves y entorno
 .env
 kaggle.json
+
+# Coach local (no va al repo público)
+CLAUDE.md
+.claude/
+
+# Salidas temporales de los envíos a Kaggle
+train/kaggle/_build/
