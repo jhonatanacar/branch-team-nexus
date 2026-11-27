@@ -66,7 +66,7 @@ def block(i, o):
 
 class Net(nn.Module):
     """CNN sobre el GFS -> interpolación a 3 km -> + relieve + mapa aprendido -> anomalía normalizada."""
-    def __init__(self, stats, w=64, enc=1, anchor='clim'):
+    def __init__(self, stats, w=64, enc=1, anchor='clim', dec=1):
         super().__init__()
         self.anchor = anchor
         dem = stats['dem']
@@ -75,7 +75,7 @@ class Net(nn.Module):
         self.enc = nn.Sequential(block(14, w), *[block(w, w) for _ in range(enc - 1)])
         self.learned = nn.Parameter(torch.zeros(1, 8, 70, 35))
         self.dec = nn.Sequential(nn.Conv2d(w + 9, w, 3, padding=1), nn.GELU(),
-                                 nn.Conv2d(w, w, 3, padding=1), nn.GELU(), nn.Conv2d(w, 4, 1))
+                                 nn.Conv2d(w, w, 3, padding=1), nn.GELU(), *[block(w, w) for _ in range(dec - 1)], nn.Conv2d(w, 4, 1))  # dec=1: igual que antes (mismos pesos)
 
     def forward(self, x, h):  # x: (B,3,17,13,4) normalizado, h: (B,) hora UTC
         B = x.shape[0]
@@ -113,7 +113,7 @@ def load_ensemble(folder, device='cpu'):
     for name, c in cfg['configs'].items():
         grupo = []
         for seed in cfg['seeds']:
-            m = Net(stats, c['w'], c['enc'], c.get('anchor', 'clim')).to(device)
+            m = Net(stats, c['w'], c['enc'], c.get('anchor', 'clim'), c.get('dec', 1)).to(device)
             m.load_state_dict(torch.load(os.path.join(folder, f'{name}_s{seed}.pt'), map_location=device))
             grupo.append(m.eval())
         models.append(grupo)
