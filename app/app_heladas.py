@@ -26,7 +26,7 @@ st.set_page_config(page_title="¿Riego esta tarde?", page_icon="🥔", layout="c
 
 @st.cache_resource
 def static():
-    return dict(np.load(ep.RAIZ / "data" / "static.npz"))
+    return dict(np.load(ep.RAIZ / "models" / "stats.npz"))  # trae el relieve y las coordenadas: no hace falta bajar la data
 
 
 @st.cache_data(ttl=3600, show_spinner="Descargando el GFS y corriendo nuestro modelo…")
@@ -84,7 +84,7 @@ with st.sidebar:
     modo = st.radio("Datos", ["Pronóstico de hoy (GFS en vivo)", "Fecha pasada (demo)"])
     dia = None
     if modo.startswith("Fecha"):
-        dia = st.date_input("Noche de", date(2024, 7, 15), min_value=date(2022, 1, 1),
+        dia = st.date_input("Noche de", date(2024, 8, 3), min_value=date(2022, 1, 1),
                             max_value=date.today() - timedelta(days=2)).isoformat()
 
 S = static()

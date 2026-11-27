@@ -68,27 +68,34 @@ Detalle de cada paso:
 
 ## 4. Modo demo con fechas pasadas
 
-En la barra lateral, **"Fecha pasada (demo)"** permite elegir una noche desde 2022 (por defecto, el 15 de julio de 2024).
+En la barra lateral, **"Fecha pasada (demo)"** permite elegir una noche desde 2022 (por defecto, el **3 de agosto de 2024**, la noche elegida para la demo).
 Descarga el GFS histórico de esa fecha desde Open-Meteo y corre el mismo modelo.
 
 Sirve porque en noviembre y diciembre (época de lluvias) casi no hay heladas: con julio (época seca) se puede mostrar una
 alerta real en el video y en la final.
 
-Ejemplos medidos (Huaraz):
+Ejemplos medidos (modelo v4):
 
-| Noche | Modelo 3 km | GFS solo | Decisión |
-|---|---|---|---|
-| 26→27 nov 2026 (en vivo) | 4.8 °C | 8.4 °C | No regar |
-| 15→16 jul 2024 (demo) | 2.0 °C | 3.9 °C | Riesgo moderado |
+| Noche | Pueblo | Modelo 3 km | GFS solo | Decisión con el modelo | Decisión con el GFS solo |
+|---|---|---|---|---|---|
+| **3→4 ago 2024 (demo)** | Huaraz | **−0.2 °C** | 4.9 °C | 🚨 Riega | ✅ No regar |
+| 20→21 jul 2024 | Huaraz | −0.1 °C | 2.8 °C | 🚨 Riega | ⚠️ Moderado |
+| 17→18 jul 2024 | Carhuaz | 1.1 °C | −5.5 °C | ⚠️ Moderado | 🚨 Riega |
+| 26→27 nov 2026 (en vivo) | Huaraz | 4.8 °C | 9.0 °C | ✅ No regar | ✅ No regar |
 
-(Modelo v4, LB 0.499.) En la validación (16–30 jun, fuera del entrenamiento), la Tmin de cada noche en la zona papera
-tiene un error de **0.84 °C con el modelo** contra **3.45 °C con el GFS solo**.
+**El GFS solo se equivoca en las dos direcciones** (recorrido de las noches del 2 jul al 4 ago 2024, `data/noche_demo.py`):
 
-En las chacras altas, el modelo sale **entre 2 y 4 °C más frío** que el GFS solo: justo lo que el GFS de 27 km no ve.
+- En **Huaraz** sale 3–4 °C **más cálido** que el modelo: no avisaría las heladas.
+- En **Carhuaz y Recuay** sale 3–7 °C **más frío**, porque su celda de 27 km incluye los nevados: diría "riega" casi todas
+  las noches de julio, es decir, falsas alarmas que hacen que el agricultor deje de creerle a la alerta.
+
+En la validación (16–30 jun, con la verdad del WRF y fuera del entrenamiento), la Tmin de cada noche en la zona papera
+tiene un error de **0.84 °C con el modelo** contra **3.45 °C con el GFS solo**. Para julio y agosto no hay verdad
+(el test no trae el WRF), así que esas noches muestran el desacuerdo, no quién acertó.
 
 ## 5. Cómo correrla
 
-Con Python (3.10 o más reciente) y la data de Kaggle en `data/` (al menos `static.npz`):
+Con Python (3.10 o más reciente). No hace falta la data de Kaggle: el relieve y las coordenadas vienen en `models/stats.npz`.
 
 ```bash
 pip install -r requirements.txt
@@ -120,5 +127,5 @@ Versión sin interfaz (genera un mapa PNG en `app/salidas/`): `python app/ejempl
 ## 7. Pendiente
 
 - ~~Botón de WhatsApp~~ hecho: "📲 Compartir por WhatsApp" abre `wa.me` con la alerta lista para el grupo de la comunidad.
-- Elegir una **noche de julio de 2024** en la que el GFS y el modelo den decisiones distintas, para el video.
+- ~~Noche demo~~ elegida: 3 de agosto de 2024 en Huaraz (modelo −0.2 °C, riega; GFS solo 4.9 °C, no regar).
 - Validar los umbrales y los pueblos (Keila).

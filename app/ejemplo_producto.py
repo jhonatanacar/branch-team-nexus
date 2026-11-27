@@ -17,7 +17,7 @@ Uso:
     python app/ejemplo_producto.py
     python app/ejemplo_producto.py --desde 2026-07-01 --hasta 2026-07-02   # fechas pasadas
 
-Por defecto lee data/static.npz (se baja de la competencia en Kaggle, pestaña Data)
+Por defecto lee el relieve y las coordenadas de models/stats.npz (van con los pesos; no hace falta bajar la data)
 y guarda el mapa en app/salidas/.
 """
 import argparse
@@ -145,14 +145,14 @@ def descargar_gfs(horas):
 
 def main():
     ap = argparse.ArgumentParser(description="Ejemplo de producto: alerta de heladas")
-    ap.add_argument("--static", default=str(RAIZ / "data" / "static.npz"), help="ruta a static.npz (de Kaggle)")
+    ap.add_argument("--static", default=str(RAIZ / "models" / "stats.npz"), help="relieve y coordenadas (models/stats.npz o data/static.npz)")
     ap.add_argument("--horas", type=int, default=24, help="horas de pronóstico hacia adelante")
     ap.add_argument("--desde", help="fecha pasada YYYY-MM-DD (opcional)")
     ap.add_argument("--hasta", help="fecha pasada YYYY-MM-DD (opcional)")
     a = ap.parse_args()
 
     if not os.path.exists(a.static):
-        raise SystemExit(f"No encuentro {a.static}. Baja la data de Kaggle a la carpeta data/ (ver README).")
+        raise SystemExit(f"No encuentro {a.static}. Revisa que models/ esté completo (ver README).")
     static = dict(np.load(a.static))
     if a.desde:
         X, times = get_gfs_forecast(start_date=a.desde, end_date=a.hasta or a.desde)
